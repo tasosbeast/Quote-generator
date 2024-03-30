@@ -59,11 +59,37 @@ async function getQuote() {
 
 // Tweet Quote
 function tweetQuote() {
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent}  ${authorText.textContent}`;
   window.open(twitterUrl, "_blank");
 }
 
 // Event Listeners
+
+// Get a reference to the button with the id 'new-quote-btn' from the DOM
+// This is done using the 'document.getElementById' method
+
+// Add an event listener to the 'newQuoteBtn' button
+// The 'addEventListener' method takes two arguments:
+// 1. The type of the event to listen for - in this case, 'click'
+// 2. The function to run when the event happens - in this case, 'newQuote'
 newQuoteBtn.addEventListener("click", newQuote);
+
+// new quote on right arrow key press
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    newQuote();
+  }
+});
+
+// tweet on enter key press
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    tweetQuote();
+  }
+});
+
+// Add an event listener to the 'twitterBtn' button
+twitterBtn.addEventListener("click", tweetQuote);
+
 // On Load
 getQuote();

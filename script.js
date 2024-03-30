@@ -13,12 +13,12 @@ function newQuote() {
   console.log(quote);
   // Check if the Author field is blank and replace it with 'Unknown'
   if (!quote.author) {
-    authorText.textContent += "Unknown";
+    authorText.textContent = "Unknown";
   } else {
-    authorText.textContent += quote.author;
+    authorText.textContent = `- ${quote.author}`;
   }
   // Check Quote length to determine styling
-  if (quote.quote.length > 100) {
+  if (quote.quote.length > 90) {
     quoteText.classList.add("long-quote");
   } else {
     quoteText.classList.remove("long-quote");
@@ -62,5 +62,8 @@ function tweetQuote() {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
   window.open(twitterUrl, "_blank");
 }
+
+// Event Listeners
+newQuoteBtn.addEventListener("click", newQuote);
 // On Load
 getQuote();

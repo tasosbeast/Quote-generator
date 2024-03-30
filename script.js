@@ -18,6 +18,12 @@ function newQuote() {
     authorText.textContent += quote.author;
   }
   // Check Quote length to determine styling
+  if (quote.quote.length > 100) {
+    quoteText.classList.add("long-quote");
+  } else {
+    quoteText.classList.remove("long-quote");
+  }
+
   quoteText.textContent = quote.quote;
 }
 // Get Quotes From API

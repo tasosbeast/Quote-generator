@@ -3,6 +3,7 @@ const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
 const twitterBtn = document.getElementById("twitter");
+const facebookBtn = document.getElementById("facebook");
 const loader = document.getElementById("loader");
 
 let apiQuotes = [];
@@ -81,6 +82,12 @@ function tweetQuote() {
   window.open(twitterUrl, "_blank");
 }
 
+//share on facebook
+function shareOnFacebook() {
+  const facebookUrl = `https://www.facebook.com/sharer/`;
+  window.open(facebookUrl, "_blank");
+}
+
 // Event Listeners
 
 // Get a reference to the button with the id 'new-quote-btn' from the DOM
@@ -108,6 +115,9 @@ document.addEventListener("keydown", (event) => {
 
 // Add an event listener to the 'twitterBtn' button
 twitterBtn.addEventListener("click", tweetQuote);
+
+// Add an event listener to the 'facebookBtn' button
+facebookBtn.addEventListener("click", shareOnFacebook);
 
 // On Load
 getQuote();

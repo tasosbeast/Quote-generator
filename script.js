@@ -93,12 +93,12 @@ function shareOnFacebook() {
 // The 'addEventListener' method takes two arguments:
 // 1. The type of the event to listen for - in this case, 'click'
 // 2. The function to run when the event happens - in this case, 'newQuote'
-newQuoteBtn.addEventListener("click", newQuote);
+newQuoteBtn.addEventListener("click", showNewQuote);
 
 // new quote on right arrow key press
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") {
-    newQuote();
+    showNewQuote();
   }
 });
 

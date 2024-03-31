@@ -3,11 +3,26 @@ const quoteText = document.getElementById("quote");
 const authorText = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
 const twitterBtn = document.getElementById("twitter");
+const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
+// Show Loading
+function loading() {
+  loader.hidden = false;
+  quoteContainer.hidden = true;
+}
+
+// Hide Loading
+function complete() {
+  quoteContainer.hidden = false;
+  loader.hidden = true;
+}
+
 // Show New Quote
 function newQuote() {
+  // Show loading spinner
+  loading();
   // Pick a random quote from apiQuotes array
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
   console.log(quote);
@@ -23,12 +38,15 @@ function newQuote() {
   } else {
     quoteText.classList.remove("long-quote");
   }
-
+  // Set Quote, Hide Loader
   quoteText.textContent = quote.quote;
+  complete();
 }
 // Get Quotes From API
 // Define an asynchronous function named getQuote
 async function getQuote() {
+  // Call the loading function to show the loader
+  loading();
   // Set the URL of the API from which we want to fetch quotes
   const apiUrl = "https://dummyjson.com/quotes ";
   const apiUrl2 =

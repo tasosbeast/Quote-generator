@@ -8,14 +8,14 @@ const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
-// Show Loading
-function loading() {
+// Show Loading Spinner
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function complete() {
+// Hide Loading Spinner
+function hideLoadingSpinner() {
   quoteContainer.hidden = false;
   loader.hidden = true;
 }
@@ -23,7 +23,7 @@ function complete() {
 // Show New Quote
 function newQuote() {
   // Show loading spinner
-  loading();
+  showLoadingSpinner();
   // Pick a random quote from apiQuotes array
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
   console.log(quote);
@@ -41,13 +41,13 @@ function newQuote() {
   }
   // Set Quote, Hide Loader
   quoteText.textContent = quote.quote;
-  complete();
+  hideLoadingSpinner();
 }
 // Get Quotes From API
 // Define an asynchronous function named getQuote
 async function getQuote() {
   // Call the loading function to show the loader
-  loading();
+  showLoadingSpinner();
   // Set the URL of the API from which we want to fetch quotes
   const apiUrl = "https://dummyjson.com/quotes ";
   const apiUrl2 =

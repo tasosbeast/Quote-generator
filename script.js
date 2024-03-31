@@ -8,21 +8,17 @@ const loader = document.getElementById("loader");
 
 let apiQuotes = [];
 
-// Show Loading Spinner
 function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
 
-// Hide Loading Spinner
 function hideLoadingSpinner() {
   quoteContainer.hidden = false;
   loader.hidden = true;
 }
 
-// Show New Quote
-function newQuote() {
-  // Show loading spinner
+function showNewQuote() {
   showLoadingSpinner();
   // Pick a random quote from apiQuotes array
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
@@ -67,7 +63,7 @@ async function getQuote() {
 
     // Call newQuote to display a random quote
 
-    newQuote();
+    showNewQuote();
   } catch (error) {
     // If there's an error in the try block, it will be caught here
 
